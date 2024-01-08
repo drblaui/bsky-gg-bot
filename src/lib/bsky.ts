@@ -26,21 +26,49 @@ export async function getPost(uri: string) {
 	return (post.data.thread.post as BskyPost).record;
 }
 
+function generateSkeets(text: string) {
+	let lines = text.split("\n");
+	let i = 0;
+	let skeets = [""]
+	for(let line of lines) {
+		if(line === "") continue;
+		if(skeets[i].length + line.length <= 300) {
+
+			skeets[i] = skeets[i] + line + "\n";
+		}
+		else {
+			i++
+			skeets.push(line + "\n");
+		}
+	}
+
+	return skeets;
+}
+
 export async function reply(post: {parent: {uri: string, cid: string}, root: {uri: string, cid: string}, text: RichText}) {
 	await login();
 	await post.text.detectFacets(agent);
-	await agent.post({
-		text: post.text.text,
-		facets: post.text.facets,
-		reply: {
-			root: {
-				uri: post.root.uri,
-				cid: post.root.cid
-			},
-			parent: {
-				uri: post.parent.uri,
-				cid: post.parent.cid
+
+	let skeets = generateSkeets(post.text.text);
+
+	let lastParent = post.parent;
+
+	for(let skeet of skeets) {
+		let posted = await agent.post({
+			text: skeet,
+			facets: post.text.facets,
+			reply: {
+				root: {
+					uri: post.root.uri,
+					cid: post.root.cid
+				},
+				parent: {
+					uri: lastParent.uri,
+					cid: lastParent.cid
+				}
 			}
-		}
-	})
+		});
+
+		lastParent = {uri: posted.uri, cid: posted.cid};
+	} 
 }

@@ -19,3 +19,4 @@ jobs:
     env:
       BSKY_MAIL: ${{secrets.BSKY_MAIL}}
       BSKY_PASS: ${{secrets.BSKY_PASS}}
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

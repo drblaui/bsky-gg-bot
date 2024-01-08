@@ -12,7 +12,9 @@ export function count(str: string) {
 		if (bible.includes(word)) {
 			let wordRegexp = new RegExp(word, "g");
 			let count = (bible.match(wordRegexp) || []).length;
-			console.log(`${word} kommt ${count} mal in der Bibel vor`)
+			res.push([word, count])
 		}
 	}
+
+	return res;
 }

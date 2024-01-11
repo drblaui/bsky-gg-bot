@@ -13,6 +13,7 @@ export function count(str: string) {
 		if (bible.includes(word)) {
 			let wordRegexp = new RegExp("\\s" + word + "\\s", "gi");
 			let count = (bible.match(wordRegexp) || []).length;
+			if(count <= 0) continue;
 			res.push([word, count])
 		}
 	}

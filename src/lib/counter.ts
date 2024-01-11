@@ -11,7 +11,7 @@ export function count(str: string) {
 	for(let word of str.split(" ")) {
 		if(word === "") continue;
 		if (bible.includes(word)) {
-			let wordRegexp = new RegExp(word, "g");
+			let wordRegexp = new RegExp("\\s" + word + "\\s", "gi");
 			let count = (bible.match(wordRegexp) || []).length;
 			res.push([word, count])
 		}

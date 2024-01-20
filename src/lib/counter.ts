@@ -9,7 +9,7 @@ export function count(str: string) {
 	let res = [];
 
 	for(let word of str.split(" ")) {
-		if(word === "") continue;
+		if(word === "" || word.replace(/\W/g, "") === "") continue;
 		if (bible.includes(word.replace(/\W/g, ""))) {
 			let wordRegexp = new RegExp("\\s" + word.replace(/\W/g, "") + "\\s", "gi");
 			let count = (bible.match(wordRegexp) || []).length;

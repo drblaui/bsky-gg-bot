@@ -10,8 +10,8 @@ export function count(str: string) {
 
 	for(let word of str.split(" ")) {
 		if(word === "") continue;
-		if (bible.includes(word)) {
-			let wordRegexp = new RegExp("\\s" + word + "\\s", "gi");
+		if (bible.includes(word.replace(/\W/g, ""))) {
+			let wordRegexp = new RegExp("\\s" + word.replace(/\W/g, "") + "\\s", "gi");
 			let count = (bible.match(wordRegexp) || []).length;
 			if(count <= 0) continue;
 			res.push([word, count])

@@ -6,11 +6,23 @@ import { getLastId, setLastId } from "./lib/github";
 
 
 getMentions().then(async (mentions) => {
-	let lastId = await getLastId();
+	//let lastId = await getLastId();
 	for(let mention of mentions) {
-		if(mention.cid === lastId) break;
+		//if(mention.cid === lastId) break;
+		console.log((mention.record as BskyPostRecord));
+		let parentUri = "";
+		let root;
+		if(!("reply" in mention.record)) {
+			parentUri = mention.uri;
+			root = {uri: mention.uri, cid: mention.cid}
 
-		let parentUri = (mention.record as BskyPostRecord).reply.parent.uri;
+		}
+		else {
+			parentUri = (mention.record as BskyPostRecord).reply.parent.uri;
+			root = {uri: (mention.record as BskyPostRecord).reply.root.uri, cid: (mention.record as BskyPostRecord).reply.root.cid}
+
+		}
+		
 		let post = await getPost(parentUri);
 		let occurrences = count(post.text);
 		let text = "";
@@ -27,7 +39,7 @@ getMentions().then(async (mentions) => {
 		});
 		await reply({
 			parent: {uri: mention.uri, cid: mention.cid},
-			root: {uri: (mention.record as BskyPostRecord).reply.root.uri, cid: (mention.record as BskyPostRecord).reply.root.cid},
+			root: root,
 			text: answerText
 		});
 		//console.log((mention.record as BskyPostRecord).reply.parent);

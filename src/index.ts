@@ -6,10 +6,10 @@ import { getLastId, setLastId } from "./lib/github";
 
 
 getMentions().then(async (mentions) => {
-	//let lastId = await getLastId();
+	let lastId = await getLastId();
 	for(let mention of mentions) {
-		//if(mention.cid === lastId) break;
-		console.log((mention.record as BskyPostRecord));
+		if(mention.cid === lastId) break;
+	
 		let parentUri = "";
 		let root;
 		if(!("reply" in mention.record)) {

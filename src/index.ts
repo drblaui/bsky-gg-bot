@@ -37,11 +37,12 @@ getMentions().then(async (mentions) => {
 		let answerText = new RichText({
 			text: text
 		});
-		await reply({
+
+		/*await reply({
 			parent: {uri: mention.uri, cid: mention.cid},
 			root: root,
 			text: answerText
-		});
+		});*/
 		//console.log((mention.record as BskyPostRecord).reply.parent);
 	}
 

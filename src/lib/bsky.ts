@@ -32,8 +32,8 @@ function generateSkeets(text: string) {
 	let skeets = [""]
 	for(let line of lines) {
 		if(line === "") continue;
-		if(skeets[i].length + line.length <= 300) {
-
+		//299 is a magic number for 300 - \n
+		if(skeets[i].length + line.length < 299) {
 			skeets[i] = skeets[i] + line + "\n";
 		}
 		else {

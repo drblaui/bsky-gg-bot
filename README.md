@@ -1,3 +1,3 @@
-# Bluesky Bibel Bot
+# Bluesky GG Bot
 
-Ein [Bot](https://bsky.app/profile/bibel-zaehler.bsky.social), der auf Mentions zählt, wie oft Wörter des Tweets in der Bibel erwähnt werden.
+Ein [Bot](https://bsky.app/profile/gg-zaehler.bsky.social), der auf Mentions zählt, wie oft Wörter des Skeets im Grundgesetz erwähnt werden.

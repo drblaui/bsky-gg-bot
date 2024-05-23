@@ -28,10 +28,10 @@ getMentions().then(async (mentions) => {
 		let text = "";
 
 		for(let occurrence of occurrences) {
-			text += `"${occurrence[0]}" ist ${occurrence[1]} mal in der Bibel\n`;
+			text += `"${occurrence[0]}" ist ${occurrence[1]} mal im Grundgesetz\n`;
 		}
 		if(text === "") {
-			text = "Keines dieser Wörter kommt in der Bibel vor";
+			text = "Keines dieser Wörter kommt im Grundgesetz vor";
 		}
 
 		let answerText = new RichText({

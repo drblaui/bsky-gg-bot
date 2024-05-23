@@ -1,21 +1,21 @@
 {
-  "name": "bsky-bible-bot",
+  "name": "bsky-gg-bot",
   "version": "1.0.0",
-  "description": "Zählt Wörter in der Bibel",
+  "description": "Zählt Wörter im Grundgesetz",
   "main": "./src/index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drblaui/bsky-bible-bot.git"
+    "url": "git+https://github.com/drblaui/bsky-gg-bot.git"
   },
   "author": "Alexander Rudolph (https://github.com/drblaui/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/drblaui/bsky-bible-bot/issues"
+    "url": "https://github.com/drblaui/bsky-gg-bot/issues"
   },
-  "homepage": "https://github.com/drblaui/bsky-bible-bot#readme",
+  "homepage": "https://github.com/drblaui/bsky-gg-bot#readme",
   "devDependencies": {
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"

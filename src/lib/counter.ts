@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 
 function getBible() : string {
-	return readFileSync("./src/assets/bibel_luther1912.txt").toString();
+	return readFileSync("./src/assets/gg.txt").toString();
 }
 
 export function count(str: string) {

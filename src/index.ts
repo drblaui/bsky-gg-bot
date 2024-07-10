@@ -11,8 +11,7 @@ getMentions().then(async (mentions) => {
 		if(mention.cid === lastId) break;
 		
 		console.log(`Looking at ${mention.cid}`)
-		break;
-		
+
 		let parentUri = "";
 		let root;
 		if(!("reply" in mention.record)) {
@@ -27,6 +26,7 @@ getMentions().then(async (mentions) => {
 		}
 		
 		let post = await getPost(parentUri);
+		if(post == null) continue;
 		let occurrences = count(post.text);
 		let text = "";
 

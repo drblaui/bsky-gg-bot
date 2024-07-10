@@ -23,6 +23,7 @@ export async function getPost(uri: string) {
 	await login();
 
 	const post = await agent.getPostThread({uri: uri})
+	if(post.data.thread.post == undefined) return null;
 	return (post.data.thread.post as BskyPost).record;
 }
 

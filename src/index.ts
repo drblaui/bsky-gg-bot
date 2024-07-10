@@ -9,7 +9,10 @@ getMentions().then(async (mentions) => {
 	let lastId = await getLastId();
 	for(let mention of mentions) {
 		if(mention.cid === lastId) break;
-	
+		
+		console.log(`Looking at ${mention.cid}`)
+		break;
+		
 		let parentUri = "";
 		let root;
 		if(!("reply" in mention.record)) {

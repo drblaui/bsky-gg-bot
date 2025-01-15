@@ -48,6 +48,7 @@ getMentions().then(async (mentions) => {
 		});
 		//console.log((mention.record as BskyPostRecord).reply.parent);
 	}
-
-	await setLastId(mentions[0].cid);
+	if(mentions[0] !== undefined) {
+		await setLastId(mentions[0].cid);
+	}
 });

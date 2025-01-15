@@ -21,10 +21,13 @@ export async function getMentions() {
 
 export async function getPost(uri: string) {
 	await login();
-
-	const post = await agent.getPostThread({uri: uri})
-	if(post.data.thread.post == undefined) return null;
-	return (post.data.thread.post as BskyPost).record;
+	try {
+		const post = await agent.getPostThread({uri: uri})
+		return (post.data.thread.post as BskyPost).record;
+	}
+	catch(e) {
+		return null
+	}
 }
 
 function generateSkeets(text: string) {
